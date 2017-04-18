@@ -1,8 +1,4 @@
-# http://stackoverflow.com/questions/2068372/fastest-way-to-list-all-primes-below-n/
-# at the link, there are bunch of ways to get list of primes under n
-# slight modification for python 3
-
-# this is used in : 005, 007, 010
+# using primes
 def primes(n):
     """ Returns  a list of primes < n """
     sieve = [True] * n
@@ -11,8 +7,4 @@ def primes(n):
             sieve[i*i::2*i]=[False]*int((n-i*i-1)/(2*i)+1)
     return [2] + [i for i in range(3,n,2) if sieve[i]]
 
-print(primes(100))
-
-
-
-# 
+print(sum(primes(2000000)))
