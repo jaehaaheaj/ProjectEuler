@@ -14,6 +14,6 @@ for p in primes(target):
 	while temp > 1:
 		temp /= p
 		ans *= p
-		print(p)
+		#print(p)
 print(ans)
 
