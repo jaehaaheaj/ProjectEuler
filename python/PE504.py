@@ -11,8 +11,21 @@ def numberOfLatticePointsInTriangle(a, b):
 			num-=1
 	return num
 
+'''
 def numberOfLatticePointsInQuad(a, b, c, d):
 	num = numberOfLatticePointsInTriangle(a, b) + numberOfLatticePointsInTriangle(b, c) + numberOfLatticePointsInTriangle(c, d) + numberOfLatticePointsInTriangle(d, a)
+	num += (a + c - 1) + (b + d - 1)
+	num -= 1
+	return num
+'''
+
+size = 4
+triangleCountArray = [[numberOfLatticePointsInTriangle(i, j) for i in range(1, size + 1)] for j in range(1, size + 1)]
+
+print("done")
+
+def numberOfLatticePointsInQuad(a, b, c, d):
+	num = triangleCountArray[a-1][b-1] + triangleCountArray[b-1][c-1] + triangleCountArray[c-1][d-1] + triangleCountArray[d-1][a-1]
 	num += (a + c - 1) + (b + d - 1)
 	num -= 1
 	return num
@@ -23,7 +36,6 @@ def isSquare(num):
 	return pow(num, 0.5) == math.floor(pow(num, 0.5))
 
 count = 0
-size = 4
 
 for a in range(1, size+1):
 	for b in range(1, size+1):
@@ -33,4 +45,4 @@ for a in range(1, size+1):
 					count+=1
 
 print(count)
-print('it will take ', 51*pow(10/3, 4)/60, 'hours using this brute force algorithm')
+print("this will take about", 10*pow(10/3, 4)/60, "minutes with my machine")
